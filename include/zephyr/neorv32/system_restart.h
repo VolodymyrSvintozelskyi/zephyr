@@ -1,0 +1,8 @@
+#include <stdint.h>
+
+#ifndef ZEPHYR_INCLUDE_ZEPHYR_NEORV32_SYSTEM_RESTART_H_
+    #define ZEPHYR_INCLUDE_ZEPHYR_NEORV32_SYSTEM_RESTART_H_
+
+    void restart_app(void);
+
+#endif /* ZEPHYR_INCLUDE_ZEPHYR_NEORV32_SYSTEM_RESTART_H_ */

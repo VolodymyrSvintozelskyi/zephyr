@@ -7,6 +7,7 @@
 #include <zephyr/irq.h>
 #include <soc.h>
 #include <stdio.h>
+#include <zephyr/neorv32/system_restart.h>
 
 static void __attribute__((__naked__,aligned(4))) rte_handler(void) {
 	// intro
@@ -69,8 +70,12 @@ static void __attribute__((__naked__,aligned(4))) rte_handler(void) {
 	// trap value
 	printf(", MTVAL=%lx", csr_read(835));
 
-	printf(" Halting CPU. </NEORV32-RTE>\n");
-	while(1);
+	printf(" Restarting CPU. </NEORV32-RTE>\n");
+	
+    restart_app();
+
+    __builtin_unreachable();
+    while (1); // should never be reached
 }
 
 #if defined(CONFIG_RISCV_SOC_INTERRUPT_INIT)
